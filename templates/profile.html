@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% if msg %} <script>
+        alert('{{ msg }}')
+      </script> {% endif %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .navbar form button {
+            float: right;
+        }
+
+        .navbar-nav {
+            --bs-nav-link-hover-color: lightblue;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .show>.nav-link {
+            color: whitesmoke;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: #cecece;
+            font-size: 18px;
+        }
+
+        .navbar-brand {
+            color: whitesmoke;
+        }
+
+        .container label {
+            font-weight: bold;
+        }
+
+        .head {
+            color: #4c7ad2;
+        }
+
+        .btnn {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            --bs-btn-hover-color: black;
+        }
+
+        .bn632-hover {
+            width: 250px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 20px;
+            height: 120px;
+            text-align: center;
+            border: none;
+            background-size: 300% 100%;
+            border-radius: 5px;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+
+        /* .bn632-hover:hover {
+      background-position: 100% 0;
+      -o-transition: all .4s ease-in-out;
+      -webkit-transition: all .4s ease-in-out;
+      transition: all .4s ease-in-out;
+    } */
+        .bn632-hover:focus {
+            outline: none;
+        }
+
+        .bn632-hover.bn26 {
+            background-image: linear-gradient(to right,
+                    #4c7ad2,
+                    #4c7ad2,
+                    #4c7ad2,
+                    #4c7ad2);
+            box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+        }
+
+        li input {
+            background: none;
+            color: white;
+            box-shadow: none;
+        }
+
+        .dropdown_designation,
+        .formation_designation {
+            height: 35px;
+            border-radius: 5px;
+            border: 0.2px solid rgba(0, 0, 0, 0.177);
+        }
+
+        .profile_container {
+            margin-top: 20px;
+            background-image: linear-gradient(to right, #4c7ad2, #4c7ad2, #4c7ad2, #4c7ad2);
+            box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+            margin-left: 30vw;
+            border-radius: 20px;
+            width: 700px !important;
+            color: white;
+        }
+        .profile_container h4
+        {
+            width: 38vw;
+            /* margin-left: 10vw; */
+        }
+        #ssoid,#email,#mobile_number,.dropdown_designation,.formation_designation,#create_password,#confirm_password
+        {
+            margin-left: 35px;
+            width: 35vw;
+        }
+        .labels
+        {
+            margin-left: 38px;
+        }
+        #save_profile
+        {
+            width: 10vw;
+            background-color: white;
+            color: #4c7ad2;
+            font-weight: bold;
+            margin-left: 13.5vw;
+        }
+        .formation {
+            text-decoration: none;
+            color: #fff;
+            font-size: 25px;
+
+        }
+        #additional-fields-container {
+  display: none;
+  margin-top: 1rem;
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg py-0" style="background:#4c7ad2;">
+            <div class="container">
+                <img src="static/images/DRI_logo.png" alt="" height="50px" width="40px">
+                <div class="collapse navbar-collapse p-4" id="navbarSupportedContent" style="color:white;">
+                    <h3>Directorate Of Revenue Intelligence</h3>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <form action="/DRI1_conditions" method="post">
+            <nav class="navbar navbar-expand-lg navabar-dark bg-dark py-0">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                            <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Home"></a>
+                              </li>
+                              {% if content.AU %}
+                              <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="User"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.AU %}
+                              <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Formations"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.AU %}
+                              <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Commodity"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.AU %}
+                              <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Designation"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.AU %}
+                              <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Regional Units"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.AU %}
+                              <li class="nav-item">            
+                                <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Sub Regional Units"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.SI %}
+                              <li class="nav-item">
+                                <a class="nav-link" href=""><input type="submit" name="submit_button" value="Share Inputs"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.D1 %}
+                              <li class="nav-item">      
+                                <a class="nav-link" href="" ><input type="submit" name="submit_button" value="DRI1"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.D2 %}
+                              <li class="nav-item">
+                                <a  class="nav-link" href=""><input type="submit" name="submit_button" value="DRI2"></a>
+                              </li>
+                              {% endif %}
+                              {% if content.D3 %}
+                              <li class="nav-item">
+                                <a class="nav-link" href=""><input  type="submit" name="submit_button" value="DRI3"></a>
+                              </li>
+                              {% endif %}
+
+                        </ul>
+        </form>
+        <form class="d-flex" action="{{ url_for('logout') }}" role="search">
+            <button class="btn btn-primary btn-sm" type="submit">Signout</button>
+        </form>
+        </div>
+        </div>
+        </nav>
+    </header>
+    <!-- Add User Start -->
+    <div class="container profile_container">
+        <form action="/post_profile_settings" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-5 border-right">
+                    <div class="row mt-2">
+                        <div class="justify-content-between mb-12">
+                            <h4 class="text-center">Add User</h4>
+                        </div>
+                        <!-- <div class="col"><label class="labels"></label><input type="text" id="ssoid"
+                            name="ssoid" class="form-control" placeholder="Enter SSOID" value=""></div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col"><label class="labels"></label><input type="text" id="ssoid"
+                                name="person_name" class="form-control" placeholder="Enter name of the person" value=""></div>
+                    </div>
+                            <div class="col"> <label class="labels"></label><input type="text" id="ssoid"
+                                    name="ssoid" class="form-control" placeholder="Enter SSOID" value=""></div>
+                      
+                        
+                        <div class="row mt-2">
+                            <div class="col-md-12"><label class="labels"></label><input type="email" id="email"
+                                    name="email" class="form-control" placeholder="Enter Email" value=""></div>
+                            </div>
+                        <div class="row mt-2">
+                            <div class="col-md-12"><label class="labels"></label><input type="text"
+                                    id="mobile_number" name="mobile_number" class="form-control" placeholder="Enter Mobile Number">
+                            </div>
+                        </div>
+                      
+                      <div class="row mt-2">
+                        <div class="col-md-12"><label class="labels"></label><br>
+                            <select class="dropdown_designation" name="formation">
+                                <option>Select Formation</option>
+                                {% for placedata  in filter_formation %}
+                                <option>{{ placedata.2 }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    
+                         <div class="row mt-2">
+                            <div class="col-md-12"><label class="labels"></label><br>
+                                <select class="dropdown_designation" name="designation">
+                                    <option>Select Designation</option>
+                                    {% for placedata  in filter_place %}
+                                    <option>{{ placedata.2 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    
+                       
+                        <div class="row mt-2">
+                            <div class="col-md-12"><label class="labels"></label><input type="password"
+                                    id="create_password" name="create_password" class="form-control" placeholder="Enter Password">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-12"><label class="labels"></label><input type="password"
+                                    id="confirm_password" name="confirm_password" class="form-control" placeholder="Confirm Password"></div>
+                        </div>
+
+                      
+                           
+                         
+                          
+
+                        <div class="mt-5 text-center"><button
+                                class="btn btn-primary profile-button p-3 mb-3" id="save_profile">Add User</button></div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </div>
+    </form>
+    </div>
+
+   
+  
+   
+    <script>
+        // Attach a click event listener to the plus button
+        const plusButton = document.querySelector('button[data-bs-toggle="collapse"]');
+        plusButton.addEventListener('click', () => {
+          const inputFieldsContainer = document.querySelector('.collapse');
+          inputFieldsContainer.classList.toggle('show');
+        });
+      </script>
+    <!-- Add User End -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

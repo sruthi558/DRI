@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SIGNIN | DRI</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% if msg %} <script>
+      alert('{{ msg }}')
+    </script> {% endif %} <style>
+      body {
+        background: #4c7ad2;
+        font-family: 'Varela Round', sans-serif;
+        overflow: hidden;
+      }
+
+      .form-control {
+        box-shadow: none;
+        border-color: #ddd;
+      }
+
+      .form-control::-webkit-outer-spin-button,
+      .form-control::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+      }
+
+      .form-control:focus {
+        border-color: #83dfec;
+      }
+
+      .login-form {
+        width: 350px;
+        margin: 90px auto;
+        padding: 20px 0;
+      }
+
+      .login-form form {
+        color: #434343;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        background: white;
+        border: none;
+        padding: 38px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+
+      .login-form h4 {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: #696c6e;
+      }
+
+      .login-form .avatar {
+        margin-left: 115px;
+        /* background: black; */
+        margin-bottom: 10px;
+        border-radius: 10px;
+      }
+
+      .form-group button {
+        border-radius: 3px;
+        height: 50px;
+        float: right;
+        margin-top: -50px;
+        outline: none;
+        border: 1px solid black;
+        background-color: #337ab7;
+        color: white;
+      }
+
+      .login-form .form-group {
+        margin-bottom: 20px;
+      }
+
+      .login-form .form-control,
+      .login-form .btn {
+        min-height: 40px;
+        border-radius: 3px;
+        transition: all 0.5s;
+      }
+
+      .login-form .btn {
+        border: none;
+        line-height: normal;
+      }
+
+      .login-form .checkbox-inline {
+        float: left;
+      }
+
+      .login-form input[type="checkbox"] {
+        margin-top: 2px;
+      }
+
+      .form-group label {
+        color: black;
+        margin-left: 80px;
+      }
+
+      .login-form input {
+        padding: 8px;
+      }
+
+      .otp {
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        margin-top: 5px;
+      }
+
+      .admin-login-form {
+        display: none;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Request me for a signup form or any type of help -->
+    <div class="login-form" id="login-form">
+      <form action="/postsignin" method="post" enctype="multipart/form-data">
+        <div class="avatar">
+          <img src="static/images/DRI_logo.png" alt="" height="60px" width="50px">
+        </div>
+        <h4 class="modal-title"> Sign in</h4>
+        <div class="form-group">
+          <select class="form-control" name="branch_level">
+            <option value="">Select</option>
+            {% for val in collections_list %}
+            <option value="{{val.2}}">{{val.2}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Enter SSOID" name="ssoid" required="required">
+        </div>
+        <div class="form-group text-center ">
+          <input type="password" class="form-control" placeholder="Enter Password" name="password" required="required"><br>
+          <input class="btn btn-sm btn-light text-dark m-5" type="submit" value="LOGIN"> <br>
+        </div>
+        <div class="row" id="row">
+          <a href="{{ url_for('forgotssoid') }}">Forgot ssoid?</a>&emsp;&emsp;&emsp;&emsp;&emsp;
+          <a href="{{ url_for('forgotpassword') }}">Forgot Password?</a>
+          <a href="#" id="admin-login-link">Login as Admin</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="login-form">
+
+      <form action="/admin_postsignin" method="post" id="admin-login-form" class="admin-login-form">
+        
+          <div class="avatar">
+            <img src="static/images/DRI_logo.png" alt="" height="60px" width="50px">
+          </div>
+          <h4 class="modal-title"> Sign in</h4>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter SSOID" name="ssoid" required="required">
+          </div>
+          <div class="form-group text-center ">
+            <input type="password" class="form-control" placeholder="Enter Password" name="password" required="required"><br>
+            <input class="btn btn-sm btn-light text-dark m-5" type="submit" value="LOGIN"> <br>
+          </div>
+          <!-- <div class="row" id="row">
+            <a href="{{ url_for('forgotssoid') }}">Forgot ssoid?</a>&emsp;&emsp;&emsp;&emsp;&emsp;
+            <a href="{{ url_for('forgotpassword') }}">Forgot Password?</a>
+            <a href="#" id="admin-login-link">Register as Admin</a>
+          </div> -->
+          <a href="{{ url_for('registration') }}">Register as Admin</a><br>
+          <a href="{{ url_for('login') }}" id="admin-login-link">Login as User</a>
+
+        </form>
+      </form>
+    </div>
+    
+
+    <script>
+      const adminLoginLink = document.getElementById("admin-login-link");
+      const adminLoginForm = document.getElementById("admin-login-form");
+
+      adminLoginLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        adminLoginForm.style.display = "block";
+        document.getElementById("login-form").style.display = "none";
+      });
+    </script>
+  </body>
+</html>

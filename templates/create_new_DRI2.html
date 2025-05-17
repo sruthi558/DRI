@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% if msg %} <script>
+  alert('{{ msg }}')
+</script> {% endif %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>CREATE NEW DRI2 | DRI</title>
+    <style>
+        .navbar form button {
+            float: right;
+        }
+
+        .navbar-nav {
+            --bs-nav-link-hover-color: lightblue;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .show>.nav-link {
+            color: whitesmoke;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            color: #cecece;
+            font-size: 18px;
+        }
+
+        .navbar-brand {
+            color: whitesmoke;
+        }
+
+        .container label {
+            font-weight: bold;
+        }
+
+        .head {
+            color: #4c7ad2;
+        }
+
+        .btnn {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+
+
+        }
+
+        .btn-primary {
+            --bs-btn-hover-color: black;
+
+        }
+
+        .bn632-hover {
+            min-width: 180px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            margin: 20px;
+            min-height: 80px;
+            text-align: center;
+            border: none;
+            background-size: 300% 100%;
+            border-radius: 20px;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
+
+        /* .bn632-hover:hover {
+            background-position: 100% 0;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        } */
+
+        .bn632-hover:focus {
+            outline: none;
+        }
+
+        .bn632-hover.bn26 {
+            background-image: linear-gradient(to right,
+                    #25aae1,
+                    #4481eb,
+                    #04befe,
+                    #3f86ed);
+            box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+        }
+
+        .nav-item button {
+            color: black;
+            font-size: 14px;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: blue;
+            background-color: var(--bs-nav-tabs-link-active-bg);
+            border-color: var(--bs-nav-tabs-link-active-border-color);
+        }
+        li input {
+      background: none;
+      color: white;
+      box-shadow: none;
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg py-0" style="background:#4c7ad2;">
+            <div class="container">
+                <img src="static/images/DRI_logo.png" alt="" height="50px" width="40px">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse p-4" id="navbarSupportedContent" style="color:white;">
+                    <h3>Directorate Of Revenue Intelligence</h3>
+
+                </div>
+            </div>
+        </nav>
+
+        <form action="/DRI1_conditions" method="post">
+            <nav class="navbar navbar-expand-lg navabar-dark bg-dark py-0">
+              <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        {% if content.AU %}
+                        <li class="nav-item">             
+                          <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Add User"></a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">             
+                          <a href="" class="nav-link" ><input type="submit" name="submit_button" value="Home"></a>
+                        </li>
+                        {% if content.SI %}
+                        <li class="nav-item">
+                          <a class="nav-link" href=""><input type="submit" name="submit_button" value="Share Inputs"></a>
+                        </li>
+                        {% endif %}
+                        {% if content.D1 %}
+                        <li class="nav-item">      
+                          <a class="nav-link" href="" ><input type="submit" name="submit_button" value="DRI1"></a>
+                        </li>
+                        {% endif %}
+                        {% if content.D2 %}
+                        <li class="nav-item">
+                          <a  class="nav-link" href=""><input type="submit" name="submit_button" value="DRI2"></a>
+                        </li>
+                        {% endif %}
+                        {% if content.D3 %}
+                        <li class="nav-item">
+                          <a class="nav-link" href=""><input  type="submit" name="submit_button" value="DRI3"></a>
+                        </li>
+                        {% endif %}
+          
+                      
+                      </ul>
+          </form>
+                    <form class="d-flex"  action="{{ url_for('logout') }}" role="search">
+                        <button class="btn btn-primary btn-sm" type="submit">Signout</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container mt-5">
+        <h2>Create New DRI-2</h2>
+        <form action="/dri2form" method="post">
+        <div class="form-group row mt-4">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Serial No</label>
+            <div class="col-sm-3">
+                <input type="text" name="serialno" class="form-control" id="inputPassword3">
+            </div>
+        </div>
+        <div class="form-group row mt-4">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Date of Issue</label>
+            <div class="col-sm-3">
+                <input type="date" name="date" class="form-control" id="inputPassword3">
+            </div>
+        </div>
+        <div class="form-group row mt-4">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Formation</label>
+            
+           
+                <input type="text" class="col-sm-3" id="Commodity" name="place" value="{{ formation }}" readonly>
+
+              
+            
+          </div>
+        <!-- <div class="form-group row mt-4">
+            <label for="" class="col-sm-2 col-form-label">Place</label>
+            <div class="col-sm-2">
+                <input type="text" name="place" class="form-control" id="place">
+            </div>
+        </div> -->
+        <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                    role="tab" aria-controls="home" aria-selected="true">CASE DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                    role="tab" aria-controls="profile" aria-selected="false">OFFENCE DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                    role="tab" aria-controls="contact" aria-selected="false">GOODS DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="user-tab" data-bs-toggle="tab" data-bs-target="#user" type="button"
+                    role="tab" aria-controls="user" aria-selected="false">FIRM DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="person-tab" data-bs-toggle="tab" data-bs-target="#person" type="button"
+                    role="tab" aria-controls="person" aria-selected="false">PERSON DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="cha-tab" data-bs-toggle="tab" data-bs-target="#cha" type="button"
+                    role="tab" aria-controls="cha" aria-selected="false">CHA DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="import-tab" data-bs-toggle="tab" data-bs-target="#import" type="button"
+                    role="tab" aria-controls="import" aria-selected="false">IMPORTER/EXPORTER DETAILS</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="role-tab" data-bs-toggle="tab" data-bs-target="#role" type="button"
+                    role="tab" aria-controls="role" aria-selected="false">ROLE PLAYED BY OFFICERS</button>
+            </li>
+        </ul>
+
+
+        
+            <!-- case details tab -->
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Case File No</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="caseno" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">Source of Case:</h4>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Information/Intelligence</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="information" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">DRI-1 File no & Date</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="fileno" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Others (Follow-up, Alerts)</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="others" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Date of Detection</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="dateofdetection" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">Name of Formation:</h4>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Commissionarate</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="commissionarate" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Division</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="division" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <!-- <h4 class="heading mt-5">Nature of Offence:</h4> -->
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nature Of Offence:</label>
+                        <div class="col-sm-8">
+                          <select class="form-select" aria-label="Default select example" name="trafficking">
+                            <option selected>Select nature Of Offence</option>
+
+                            <option>Commercial Fraud</option>
+                            <option>Outright Smuggling</option>
+                            <option>Drug Trafficking</option>
+
+
+                            
+
+
+                          
+                           
+                          </select>
+                        </div>
+                      </div>
+                    
+                    <!-- <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Commercial Fraud/Outright
+                            Smuggling/Drug Trafficking</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="trafficking" class="form-control" id="inputPassword3">
+                        </div>
+                    </div> -->
+                    <!-- <h4 class="heading mt-5">Offence Related to:</h4> -->
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Offence Related to:</label>
+                        <div class="col-sm-8">
+                          <select class="form-select" aria-label="Default select example" name="seizure">
+                            <option selected>Offence Related to</option>
+
+                            <option>Import</option>
+                            <option>Export</option>
+                            <option>Town Seizure</option>
+
+
+                            
+
+
+                          
+                           
+                          </select>
+                        </div>
+                      </div>
+
+                    <!-- <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Import/Export/Town Seizure</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="seizure" class="form-control" id="inputPassword3">
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- offence details tab -->
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Amount of Duty involved(Value in Rs Cr.)</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="amountofduty" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Import Duty Amount(Value in Rs Cr.)</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="importduty" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Export Incentive Denied </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="export" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Anti-Dumping duty </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="antidumping" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">Value of the goods involved(Value in Rs Cr.):</h4>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Assessable / FOB Value(Value in Rs Cr.) </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="fobvalue" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description of offence </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="description" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Modus Operandi in brief </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="modus" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- goods details tab -->
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <h4 class="heading mt-5">Non Seizure:</h4>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description of goods involved
+                        </label>
+                        <div class="col-sm-8">
+                            <input name="goods_involved" type="text" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">CTH (eight digit) </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="cth" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Country of Origin</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="country" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5"> Seizure Details:</h4>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Date of Seizure</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="date_of_seizure" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Time Of Seizure</label>
+                        <div class="col-sm-8">
+                            <input type="time" name="time_of_seizure"  class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <!-- <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Place Of Seizure</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="place_of_seizure"    class="form-control" id="inputPassword3">
+                        </div>
+                    </div> -->
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Place Of Seizure</label>
+                        <div class="col-sm-8">
+                          <select class="form-select" aria-label="Default select example" name="place_of_seizure">
+                            <option selected>Select Place of Seizure</option>
+
+                            <option>Port</option>
+                            <option>Airport</option>
+                            <option>ICD</option>
+                            <option>CFS</option>
+                            <option>FPO</option>
+
+
+
+
+                            
+
+
+                          
+                           
+                          </select>
+                        </div>
+                      </div>
+                    <!-- <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> Port/Airport/ICD/CFS/FPO</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="port"  class="form-control" id="inputPassword3">
+                        </div>
+                    </div> -->
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Other places</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="other_places" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description of the goods seized
+                            *</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="goods_seized" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">CTH (eight digit)</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="cth2" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> Quantity of the goods seized
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="quantity" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Unit of Quantity</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="unit" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Marking</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="marking" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Brand Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="brandname" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Model</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="model" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Make</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="make" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Type of Packages</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="type_of_packages" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Description & Value of Conveyance
+                            seized(Value in Rs Cr)</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="value_of_conveyance" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Total Value of seizure
+                            (Declared)(Value in Rs Cr)</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="toatal_value" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Total Value of the seizure
+                            (Market/Actual) (Value in Rs Cr)</label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="total_value_of_seizure" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- firm details -->
+
+                <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the Firm </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name_of_firm" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nature of the Firm</label>
+                        <div class="col-sm-8">
+                          <select class="form-select" aria-label="Default select example" name="nature_of_firm">
+                            <option selected>Select Nature of the Firm</option>
+
+                            <option>Sole Proprietorship</option>
+                            <option>Partnership</option>
+                            <option>Pvt.Ltd.</option>
+                            <option>Public Ltd</option>
+                            <!-- <option>FPO</option> -->
+                         </select>
+                        </div>
+                       </div>
+                    <!-- <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nature of the Firm </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="nature_of_firm" class="form-control" id="inputPassword3">
+                        </div>
+                    </div> --> 
+                    <!-- <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Sole
+                            Proprietorship/Partnership/Pvt.Ltd./Public Ltd </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="type" class="form-control" id="inputPassword3">
+                        </div>
+                    </div> -->
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the Proprietor/ Partners/
+                            Directors of the firm </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name_of_proprietor" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Address (es) of the firm in India
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="address" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone Numbers </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="telephone" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Address (es) of the firm Abroad
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="address_firm_abroad" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone Numbers </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="telephone_number" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Business of the firm : </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="business" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Trader/Manufacture/Service Provider
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="trader" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Others </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="others_" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">IEC of the firm </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="iec" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">PAN Card Details:</h4>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> PAN-Card No. </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pan_no" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> PAN Card-Dt.of Issue </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pan_date" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">PAN Card-Place of Issue </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pan_place" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Address of the Factory </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="address_of_factory" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> Address of the Godown </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="address_of_godown" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    
+                    <h4 class="heading mt-5">BANK Details:</h4>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Account No. </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="account_no" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Previous offences (if known)
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="offences" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                </div>
+                <!-- person details -->
+                <div class="tab-pane fade" id="person" role="tabpanel" aria-labelledby="person-tab">
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the person *
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="person_name" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Alias, if any
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="alias" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Father's / Husband's Name
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="father_name" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nationality
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="nationality" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Date of Birth
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="date_of_birth" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Status of the person in the Firm
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="status" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Residential address
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="residential_address" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Residential phone numbers
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="residential_phone_numbers" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">mobile phone numbers
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="mobile_numbers" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">profession/Occupation
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="profession" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">abroad phone numbers
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="abroad_numbers" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">Travelled By:</h4>
+
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Aircraft/Ship/Vechile
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="aircraft" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Details of Aircraft/Ship/Vechile
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="details_aircraft" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Details of Passport/Driving
+                            Licence/Election Card
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="details_passport" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">PP/DL/Election Card No.
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pp" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">PP/DL/Election Card No.
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="pp_dl" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">PP/DL/Election Card No-Place of
+                            Issue
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pp_dl_elec" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">PAN Card Details:</h4>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">PAN Card No.
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pan_no" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">PAN Card-Dt. Of Issue
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pan_date_of_issue" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> PAN Card-Place of Issue
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pan_place_of_issue" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">BANK Details:</h4>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the Bank
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="bank_name" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Account No
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="ac_no" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <h4 class="heading mt-5">Role of the Person:</h4>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Whether Interrogated (Yes/No)
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="interogated" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Whether Arrested (Yes/No)
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="arrested" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Previous offences (if known)
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="offences" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Previous Convictions (if known)
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="convictions" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Previous COFEPOSA detention (if
+                            known)
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="cofeposa" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <!-- CHA details -->
+
+                <div class="tab-pane fade" id="cha" role="tabpanel" aria-labelledby="cha-tab">
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the CHA firm
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name_of_cha" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the Partners/Directors of the firm
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name_partners" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">	Address of the CHA firm	
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="address_of_cha" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone Number
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="tele" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">CHA Licence No
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="cha" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Custom House concerned
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="custom" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the key person Involved
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="key_person" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Previous Offences (if any)	Not applicable
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="prev_offences" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <!-- importer/exporter details tab -->
+                <div class="tab-pane fade" id="import" role="tabpanel" aria-labelledby="import-tab">
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label"> No. of the BE/ Shipping Bill
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="no_of_be" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Date of the BE/ Shipping Bill
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="date_of_be" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Consignor Name	
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="consignor_name" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Consignor Address
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="consignor_address" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Consignee Name
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="consignee_name" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Consignee Address
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text" name="consignee_address" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Name of the overseas Buyer/Supplier    </label>
+
+                        <div class="col-sm-8">
+                            <input type="text" name="name_of_overseas_buyer" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Address of overseas Buyer/Supplier
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="address_of_overseas" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="tab-pane fade" id="role" role="tabpanel" aria-labelledby="role-tab">
+                  <div class="form-group row mt-4">
+                        <label for="inputPassword3" class="col-sm-2 col-form-label">Departmental Officers, who participated in the 
+                            seizure/detection of the case.
+                        </label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="depart" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row mt-5 mb-5">
+                    <div class="col-sm-8">
+                        <button type= "button" class="btn btn-primary p-2 mt-5 " onclick="printForm()" id="printButton" data-bs-toggle="modal" data-bs-target="#exampleModal">Preview</button>
+
+                        <button type="submit" class="btn btn-primary p-2 mt-5">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script>
+        $('[data-toggle=tab]').click(function () {
+            return false;
+        }
+        ).addClass("text-muted");
+
+        var validated = function (tab) {
+            tab.unbind('click').removeClass('text-muted').addClass('green');
+        }
+
+        //validate inputs on click of button
+        $('.btn-ok').click(function () {
+
+            var allValid = true;
+            // get each input in this tab pane and validate
+            $(this).parents('.tab-pane').find('.form-control').each(function (i, e) {
+
+                // some condition(s) to validate each input
+                var len = $(e).val().length;
+                if (len > 0) {
+                    // validation passed
+                    allValid = true;
+                } else {
+                    // validation failed
+                    allValid = false;
+                }
+
+            });
+
+            if (allValid) {
+                var tabIndex = $(this).parents('.tab-pane').index();
+                validated($('[data-toggle]').eq(tabIndex + 1));
+            }
+
+        });
+
+        // always validate first tab
+        validated($('[data-toggle]').eq(0));
+
+        // form submit
+        $("#myForm").submit(function (event) {
+            console.log("Handler for .submit() called..");
+            console.log($(this).serialize());
+            event.preventDefault();
+        });
+
+    </script>
+    <script>
+        function printForm() {
+          // Trigger the browser's print functionality
+          window.print();
+        }
+      </script>
+
+</body>
+
+</html>
